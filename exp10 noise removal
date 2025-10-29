@@ -1,0 +1,36 @@
+ clc
+ clear
+ [x1 , Fs] = audioread('Tauba_noise1.wav');
+ x = x1(:,1)';
+ figure(1) , plot(x)
+ #################
+ X = abs(fft(x)); #Magnitude Spectrum
+ figure(2) , stem(X)
+ #################
+ #Impulse Response
+ M = 501;
+ shift = (M-1) / 2;
+ for n = 0 : 1 : M-1
+  hds(n+1) = sin(0.75*pi*(n-shift))/(pi*(n-shift));
+ end
+ hds(shift+1) = 0.75;
+ figure(3)
+ plot(hds)
+ #Rectangular Window
+ for n = 0 : 1 : M-1
+  wr(n+1) = 1;
+ end
+ #Multiply Impulse Response with window
+ h = hds .* wr;
+ figure(4)
+ plot(h)
+ #Checking the filter
+ figure(5)
+ freqz(h,1,M,Fs)
+ #Implementing the filter
+ y = conv(x,h);
+ # DFT to check filtering
+ Y = abs(fft(y));
+ figure(6)
+ stem(Y)
+ audiowrite('Noise_removed.wav' , y , Fs)
