@@ -1,0 +1,16 @@
+ clc
+ clear
+ M = 41
+ for n = 0 : 1 : M-1
+  wr(n+1) = 1;
+  wh(n+1) = 0.5 - 0.5*cos((2*pi*n) / (M-1));
+  whm(n+1) = 0.54 - 0.46*cos((2*pi*n) / (M-1));
+  bm(n+1) = 0.42 - 0.5*cos((2*pi*n) / (M-1)) + 0.08*cos((4*pi*n) / (M-1));
+ end
+ plot(wr)
+ hold on
+ plot(wh)
+ hold on
+ plot(whm)
+ hold on
+ plot(bm)
