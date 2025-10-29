@@ -1,0 +1,51 @@
+clc
+ clear
+ #Impulse Response
+ M = 201;
+ shift = (M-1) / 2;
+ for n = 0 : 1 : M-1
+  hds(n+1) = sin(0.825*pi*(n-shift))/(pi*(n-shift));
+ end
+ hds(shift+1) = 0.825;
+ figure(1)
+ plot(hds)
+ #Rectangular Window
+ for n = 0 : 1 : M-1
+  wr(n+1) = 1;
+ end
+ #Multiply Impulse Response with window
+ h = hds .* wr;
+ figure(2)
+ plot(h)
+ #Checking the filter
+ figure(3)
+ freqz(h,1,M,8000)
+ #Implementing
+
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ clc
+ clear
+ #Impulse Response
+ M = 201;
+ shift = (M-1) / 2;
+ for n = 0 : 1 : M-1
+  hds(n+1) = sin(0.4*pi*(n-shift))/(pi*(n-shift));
+ end
+ hds(shift+1) = 0.4;
+ figure(1)
+ plot(hds)
+ #Hanning Window
+ for n = 0 : 1 : M-1
+  wh(n+1) = 0.5 - 0.5*cos((2*pi*n) / (M-1));
+ end
+ #Multiply Impulse Response with window
+ h = hds .* wh;
+ figure(2)
+ plot(h)
+ #Checking the filter
+ figure(3)
+ freqz(h,1,M,20000)
+ #Implementing
