@@ -1,0 +1,28 @@
+ % Aliasing
+ clc
+ clear
+ A = 12;
+ F1 = 10; % Unit : Hz
+ F2 = 15; % Unit : Hz
+ F3 = 50; % Unit : Hz
+ F4 = 95; % Unit : Hz
+ F5 = 12010; % Unit : Hz
+ Fs = 40; % Unit : Hz
+ for n = 1:1:60
+  x1(n) = A * cos(2*pi*F1*n/Fs);
+  x2(n) = A * cos(2*pi*F2*n/Fs);
+  x3(n) = A * cos(2*pi*F3*n/Fs);
+  x4(n) = A * cos(2*pi*F4*n/Fs);
+  x5(n) = A * cos(2*pi*F5*n/Fs);
+ endfor
+ x1;
+ %figure (1), stem(x1)
+ %figure (2), stem(x2)
+ %figure (3), stem(x3)
+ %figure (4), stem(x4)
+ %figure (5), stem(x5)
+ subplot(5,1,1), stem(x1)
+ subplot(5,1,2), stem(x2)
+ subplot(5,1,3), stem(x3)
+ subplot(5,1,4), stem(x4)
+ subplot(5,1,5), stem(x5)
