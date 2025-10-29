@@ -1,0 +1,24 @@
+ clc
+ clear
+ x = [ 1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1 1 2 3 4 5 6 7 8 9 8 7 6 5 4 3 2 1];
+ N = length(x);
+ for n = 1:1:(N/2)
+  y(n) = x(2*n);
+ endfor
+ y;
+ figure(1), stem(x)
+ figure(2), stem(y)
+ N1 = length(y);
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ for  n = 2:2:(2*N1)
+  z(n) = y(n/2);
+ endfor
+ z;
+ N2 = length(z);
+ figure(3), stem(z)
+ z1 = z;
+ for n = 3:2:N2
+  z1(n) = (z(n-1) + z(n+1))/2;
+ endfor
+ z1;
+ figure(4), stem(z1)
